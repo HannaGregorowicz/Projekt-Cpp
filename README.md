@@ -9,7 +9,7 @@ Schemat działania istotnego dla mojego programu algorytmu wygląda następując
 4. Sprawdzenie, czy nowa populacja kół przypomina zadane zdjęcie bardziej niż "matka". Jeżeli tak, populacja staje się nową "matką".
 5. Przejście do kroku 3. Powtarzanie czynności aż do momentu, w którym obrazek będzie wyraźnie przypominać zadane zdjęcie.
 
-Przewidywane rezultaty działania programu ilustruje grafika zamieszczona w poniższym linku.
-https://imgur.com/a/uaKmpYQ
+Przewidywane rezultaty działania programu ilustruje grafika zamieszczona poniżej.
+![kolka](https://i.imgur.com/V0ZDrtO.png)
 
 Mam zamiar również zrobić GUI, w którym użytkownik będzie mógł wgrać własny obrazek, który ma zostać odwzorowany z kółek (miał możliwość wstawienia/wgrania własnego dowolnego obrazu, który następnie zostanie odwzorowany przez program przy użyciu wyżej opisanej przeze mnie metody).
