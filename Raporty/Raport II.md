@@ -1,4 +1,4 @@
-**Raport II** 25.10.2018
+**Raport II** 08.11.2018
 
 Wykonałam moje założenia z poprzedniego raportu, tj. utworzyłam pliki projektu, napisałam klasę kółek, wygenerowałam pierwszą populację, a także napisałam już kod odpowiedzialny za wgranie obrazka, teraz jednak jest on zakomentowany, ponieważ póki co nie był potrzebny.
 
