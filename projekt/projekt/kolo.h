@@ -13,9 +13,9 @@ public:
 	float radius;
 
 	//Kolor
-	int r;
-	int g;
-	int b;
+	int col;
+
+	//Transparentnoœæ
 	int t;
 
 	void setup();

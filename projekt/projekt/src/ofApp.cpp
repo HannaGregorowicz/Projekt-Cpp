@@ -3,7 +3,10 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//cam.setAutoDistance(true);
-	//img.load("images/corgi.png");
+	img.load("images/corgi.png");
+	ofPixels & piksele_org = img.getPixels();
+
+
 	ofBackground(ofColor::white);
 	
 	for (int i = 0; i < 128; i++)
@@ -15,6 +18,25 @@ void ofApp::setup(){
 	{
 		koleczka[i]->setup();
 	}
+
+	int ile_czarnych = 0;
+	for (int i = 0; i < (ofGetHeight()*ofGetHeight() * 4); i++)	  // Tutaj jest *4, poniewa¿ ka¿dy piksel zajmuje 4
+	{															  // miejsca tablicy - r, g, b i transparentnoœæ
+
+		//Ta pêtla leci po ka¿dym pikselu obrazka i pobiera wartoœæ
+		
+		if (i%4==0)
+		{
+			cout << i << "    " << int(piksele_org[i]) << endl;
+
+			if (int(piksele_org[i]) <= 50)
+			{
+				ile_czarnych += 1;
+			}	
+		}
+
+	}
+	cout << ile_czarnych;
 }
 
 //--------------------------------------------------------------
@@ -28,7 +50,7 @@ void ofApp::draw(){
 	//img.draw(0, 0);
 	for (int i = 0; i < koleczka.size(); i++)
 	{
-		ofSetColor(koleczka[i]->r, koleczka[i]->g, koleczka[i]->b,koleczka[i]->t);
+		ofSetColor(koleczka[i]->col, koleczka[i]->col, koleczka[i]->col,koleczka[i]->t);
 		ofDrawCircle(koleczka[i]->x, koleczka[i]->y, koleczka[i]->radius);
 	}
 	
