@@ -4,6 +4,7 @@ Udało mi się wykonać wszystkie zadania, które zadałam sobie na ten tydzień
 - zapisywaniem obrazka (był on zapisany jako cały czarny kwadrat, okazało się że rozmiar musi być liczbą podzielną przez 4, choć w internecie nie ma żadnej informacji na ten temat)
 - rozbiciem obrazków na piksele (ciągle były błędy, było to spowodowane faktem, że openframeworks zapisuje obrazek w formacie .jpg, a oryginalny był w .png, przez co funkcja getPixels() zwracała tablice o różnych wymiarach)
 - strukturalnością kodu - jak zrobić, by jakaś czynność wykonała się przed inną, w jaki sposób w ogóle openframeworks "przemieszcza się" po programie
+
 Są to powody, przez które powstało jednodniowe opóźnienie w powstaniu tego raportu.
 
 W najbliższym tygodniu planuję zająć się tworzeniem losowej mutacji losowego elementu populacji.
