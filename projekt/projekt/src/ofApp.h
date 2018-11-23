@@ -4,6 +4,7 @@
 #include <vector>
 #include <ofEasyCam.h>
 #include "../kolo.h"
+#include <string.h>
 class ofApp : public ofBaseApp{
 
 	public:
@@ -27,4 +28,10 @@ class ofApp : public ofBaseApp{
 		vector<kolo*> koleczka;
 	
 		ofImage img;
+		ofImage pop;
+		int a = 0;
+		bool up = false;
+		bool dr = true;
+		ofPixels piksele_org;
+		ofPixels piksele_new;
 };

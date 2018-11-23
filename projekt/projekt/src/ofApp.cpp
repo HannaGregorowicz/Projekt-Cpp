@@ -3,12 +3,12 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//cam.setAutoDistance(true);
-	img.load("images/corgi.png");
-	ofPixels & piksele_org = img.getPixels();
-
+	img.load("images/corgi.jpg");
+	piksele_org = img.getPixels();
 
 	ofBackground(ofColor::white);
-	
+	ofEnableAlphaBlending();
+
 	for (int i = 0; i < 128; i++)
 	{
 		koleczka.push_back(new kolo);
@@ -19,41 +19,59 @@ void ofApp::setup(){
 		koleczka[i]->setup();
 	}
 
-	int ile_czarnych = 0;
-	for (int i = 0; i < (ofGetHeight()*ofGetHeight() * 4); i++)	  // Tutaj jest *4, poniewa¿ ka¿dy piksel zajmuje 4
-	{															  // miejsca tablicy - r, g, b i transparentnoœæ
-
-		//Ta pêtla leci po ka¿dym pikselu obrazka i pobiera wartoœæ
-		
-		if (i%4==0)
-		{
-			cout << i << "    " << int(piksele_org[i]) << endl;
-
-			if (int(piksele_org[i]) <= 50)
-			{
-				ile_czarnych += 1;
-			}	
-		}
-
-	}
-	cout << ile_czarnych;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+	a++;
 	
+
+	if (up==true)
+	{ 
+		int fitness1 = 0;		// Zmienna "roznicy" miedzy obrazkami
+		
+		piksele_new = pop.getPixels();
+
+
+		for (int i = 0; i < (ofGetHeight()*ofGetHeight() * 3); i++)	  // Tutaj jest *4, poniewaz kazdy piksel zajmuje 4
+		{															  // miejsca tablicy - r, g, b i transparentnosc
+
+			//Ta petla leci po kazdym pikselu obrazka i pobiera wartosc
+
+			if (i % 3 == 0)
+			{
+				if (int(piksele_new[i]) != 0) {
+					
+					fitness1 += pow((int(piksele_org[i]) - int(piksele_new[i])), 2);		//Glowne rownanie mierzenia "roznicy" miedzy obrazkami
+				}
+			}
+		}
+		fitness1 /= 1000000;	//Dziele przez milion, zeby mozna bylo latwiej zarzadzac ta liczba
+		cout << fitness1 << endl;
+		up = false;
+		
+	}
+
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
 	//cam.begin();
 	//img.draw(0, 0);
-	for (int i = 0; i < koleczka.size(); i++)
+	if (dr == true)
 	{
-		ofSetColor(koleczka[i]->col, koleczka[i]->col, koleczka[i]->col,koleczka[i]->t);
-		ofDrawCircle(koleczka[i]->x, koleczka[i]->y, koleczka[i]->radius);
+		for (int i = 0; i < koleczka.size(); i++)
+		{
+			ofSetColor(koleczka[i]->col, koleczka[i]->col, koleczka[i]->col, koleczka[i]->t);
+			ofDrawCircle(koleczka[i]->x, koleczka[i]->y, koleczka[i]->radius);
+		}
+		pop.grabScreen(0, 0, 224, 224);
+		pop.saveImage("murlok.jpg");
+		
+		dr = false;
+		up = true;
 	}
-	
+
 
 	//cam.end();
 	
@@ -61,7 +79,8 @@ void ofApp::draw(){
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-
+	
+	
 }
 
 //--------------------------------------------------------------
@@ -96,7 +115,7 @@ void ofApp::mouseEntered(int x, int y){
 
 //--------------------------------------------------------------
 void ofApp::mouseExited(int x, int y){
-
+	
 }
 
 //--------------------------------------------------------------
