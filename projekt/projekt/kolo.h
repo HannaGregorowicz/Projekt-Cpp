@@ -7,7 +7,8 @@ class kolo
 public:
 	kolo();
 	~kolo();
-	//Pozycje i promieñ
+
+	//Pozycje i promien
 	float x;
 	float y;
 	float radius;
@@ -15,7 +16,7 @@ public:
 	//Kolor
 	int col;
 
-	//Transparentnoœæ
+	//Transparentnosc
 	int t;
 
 	void setup();
