@@ -6,7 +6,7 @@
 void ofApp::setup(){
 	//cam.setAutoDistance(true);
 	img.load("images/corgi.jpg");
-	//newcorgi.load("images/newcorgi.jpg");
+	
 	piksele_org = img.getPixels();
 
 	ofBackground(ofColor::white);
@@ -40,7 +40,6 @@ int ofApp::mierz(int x) {
 		piksele_new = popnew.getPixels();
 	}
 	
-	//piksele_new = newcorgi.getPixels();
 
 	for (int i = 0; i < (ofGetHeight()*ofGetHeight() * 3); i++)	  // Tutaj jest *3, poniewaz kazdy piksel zajmuje 4
 	{															  // miejsca tablicy - r, g, b
@@ -55,14 +54,12 @@ int ofApp::mierz(int x) {
 		}
 	}
 	fitness1 /= 1000000.0;	//Dziele przez milion, zeby mozna bylo latwiej zarzadzac ta liczba
-	//cout << fitness1 << endl;
 	return fitness1;
 }
 
 //--------------------------------------------------------------
 void ofApp::mutuj() {
 
-	//koleczka_zmutowane = koleczka;
 	koleczka_zmutowane.clear();
 	for (int i = 0; i < koleczka.size(); i++)		// Ta petla to rozwiazanie tymczasowe
 	{
@@ -114,12 +111,18 @@ void ofApp::update(){
 
 		if (fit2 < fit1)
 		{
-			koleczka = koleczka_zmutowane;		// To trzeba zmienic bo ten sam problem co w funkcji mutuj()
+			//Dobrze by bylo wrzucic to w osobna funkcje
+			for (int i = 0; i < koleczka.size(); i++)
+			{
+				koleczka[i]->x = koleczka_zmutowane[i]->x;
+				koleczka[i]->y = koleczka_zmutowane[i]->y;
+				koleczka[i]->radius = koleczka_zmutowane[i]->radius;
+				koleczka[i]->col = koleczka_zmutowane[i]->col;
+				koleczka[i]->t = koleczka_zmutowane[i]->t;
+			}
+			cout << fit2 << endl;
 		}
-		if ((a % 10) == 0)
-		{
-			cout << a << endl;
-		}
+
 		if (a == 99999)
 		{
 			koniec.grabScreen(0, 0, 224, 224);
@@ -133,14 +136,13 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
 	//cam.begin();
-	//img.draw(0, 0);
+	
 	if (dr == true)
 	{
 		for (int i = 0; i < koleczka.size(); i++)
 		{
 			ofSetColor(koleczka[i]->col, koleczka[i]->col, koleczka[i]->col, koleczka[i]->t);
 			ofDrawCircle(koleczka[i]->x, koleczka[i]->y, koleczka[i]->radius);
-
 		}
 
 		pop.grabScreen(0, 0, 224, 224);
@@ -148,7 +150,6 @@ void ofApp::draw(){
 		ofSetColor(255, 255, 255);
 		ofDrawCircle(112, 112, 250);
 
-		//Sleep(1000);
 
 		for (int i = 0; i < koleczka_zmutowane.size(); i++)
 		{
@@ -157,12 +158,11 @@ void ofApp::draw(){
 		}
 
 		popnew.grabScreen(0, 0, 224, 224);
-		//Sleep(1000);
+		
 		//pop.saveImage("murlok.jpg");
 		
 		//dr = false;
-		//Sleep(5000);
-		//cout << "Rysuje" << endl;
+		
 		if (a < 100000)
 		{
 			up = true;
@@ -170,14 +170,12 @@ void ofApp::draw(){
 			
 	}
 
-
 	//cam.end();
 	
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-	
 	
 }
 

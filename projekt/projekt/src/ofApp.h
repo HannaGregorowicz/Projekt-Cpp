@@ -25,21 +25,21 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		vector<kolo*> koleczka;
-		vector<kolo*> koleczka_zmutowane;
+		vector<kolo*> koleczka;			// Vector w ktorym przechowuje wszystkie kolka
+		vector<kolo*> koleczka_zmutowane;		// Vector kolek po mutacji
 
 		ofImage img;
 		ofImage pop;	// Populacja
 		ofImage popnew;		// Nowa populacja
 		ofImage koniec;		// Obrazek koncowy
-		//ofImage newcorgi;
-		int a = 0;
+		
+		int a = 0;		// Zmienna ktora liczy ile razy program juz sie wykonal
 		bool up = false;	// Update
-		bool dr = true;	
-		// Draw - te dwie zmienne to zeby program robil po kolei a nie naraz
-		ofPixels piksele_org;
-		ofPixels piksele_new;
-		int petla = 0;
+		bool dr = true;		// Draw - te dwie zmienne to zeby program robil po kolei a nie naraz
+		
+		ofPixels piksele_org;		// Piksele - oryginalny obrazek
+		ofPixels piksele_new;		// Piksele - nowy obrazek
+		
 		int fit1;	// Zmienna "roznicy" miedzy obrazkami
 		int fit2;	// Druga zmienna "roznicy"
 		int mierz(int x);	// Funkcja do mierzenia tej roznicy
