@@ -25,8 +25,8 @@ class ofApp : public ofBaseApp{
 		void dragEvent(ofDragInfo dragInfo);
 		void gotMessage(ofMessage msg);
 
-		vector<kolo*> koleczka;			// Vector w ktorym przechowuje wszystkie kolka
-		vector<kolo*> koleczka_zmutowane;		// Vector kolek po mutacji
+		vector<kolo> koleczka;			// Vector w ktorym przechowuje wszystkie kolka
+		vector<kolo> koleczka_zmutowane;		// Vector kolek po mutacji
 
 		ofImage img;
 		ofImage pop;	// Populacja
@@ -45,6 +45,5 @@ class ofApp : public ofBaseApp{
 		int mierz(int x);	// Funkcja do mierzenia tej roznicy
 		
 		void mutuj();	// Funkcja robi¹ca mutacje
-		
-		
+
 };

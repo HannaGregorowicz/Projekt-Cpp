@@ -1,11 +1,8 @@
 #include "kolo.h"
 
-
-
 kolo::kolo(){
 	
 }
-
 
 void kolo::setup()
 
