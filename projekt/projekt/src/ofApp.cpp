@@ -1,11 +1,12 @@
 #include "ofApp.h"
 #include "../kolo.h"
 #include <algorithm>
+#include <string>
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//cam.setAutoDistance(true);
-	img.load("images/corgi.jpg");
+	img.load("images/corgi1.jpg");
 	
 	piksele_org = img.getPixels();
 
@@ -68,30 +69,11 @@ void ofApp::mutuj() {
 	
 	if (x == 0)		// Pozycja X
 	{
-		int temp = int(koleczka_zmutowane[i].x*0.35);
-		int temp1 = ofRandom(2);
-		if (temp1 == 0)
-		{
-			koleczka_zmutowane[i].x += ofRandom(temp);
-		}
-		if (temp1 == 1)
-		{
-			koleczka_zmutowane[i].x -= ofRandom(temp);
-		}
-		
+		koleczka_zmutowane[i].x = ofRandom(223);
 	}
 	else if (x == 1)	// Pozycja Y
 	{
-		int temp = int(koleczka_zmutowane[i].y*0.35);
-		int temp1 = ofRandom(2);
-		if (temp1 == 0)
-		{
-			koleczka_zmutowane[i].y += ofRandom(temp);
-		}
-		if (temp1 == 1)
-		{
-			koleczka_zmutowane[i].y -= ofRandom(temp);
-		}
+		koleczka_zmutowane[i].y = ofRandom(223);
 	}
 	else if (x == 2)	// Promien
 	{
@@ -169,6 +151,11 @@ void ofApp::draw(){
 	{
 		cout << a << endl;
 		cout <<"Fit: " << fit2 << endl;
+	}
+	if (a % 100 == 0)
+	{
+		string nazwa = "/proba4/" + to_string(a) + ".jpg";
+		popnew.saveImage(nazwa);
 	}
 	//cam.end();
 	
