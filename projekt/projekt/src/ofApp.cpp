@@ -68,11 +68,30 @@ void ofApp::mutuj() {
 	
 	if (x == 0)		// Pozycja X
 	{
-		koleczka_zmutowane[i].x = ofRandom(223);
+		int temp = int(koleczka_zmutowane[i].x*0.35);
+		int temp1 = ofRandom(2);
+		if (temp1 == 0)
+		{
+			koleczka_zmutowane[i].x += ofRandom(temp);
+		}
+		if (temp1 == 1)
+		{
+			koleczka_zmutowane[i].x -= ofRandom(temp);
+		}
+		
 	}
 	else if (x == 1)	// Pozycja Y
 	{
-		koleczka_zmutowane[i].y = ofRandom(223);
+		int temp = int(koleczka_zmutowane[i].y*0.35);
+		int temp1 = ofRandom(2);
+		if (temp1 == 0)
+		{
+			koleczka_zmutowane[i].y += ofRandom(temp);
+		}
+		if (temp1 == 1)
+		{
+			koleczka_zmutowane[i].y -= ofRandom(temp);
+		}
 	}
 	else if (x == 2)	// Promien
 	{
@@ -149,6 +168,7 @@ void ofApp::draw(){
 	if (a % 500 == 0)
 	{
 		cout << a << endl;
+		cout <<"Fit: " << fit2 << endl;
 	}
 	//cam.end();
 	
