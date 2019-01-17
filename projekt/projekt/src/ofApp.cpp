@@ -6,7 +6,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//cam.setAutoDistance(true);
-	img.load("images/corgi1.jpg");
+	img.load("images/cat.jpg");
 	
 	piksele_org = img.getPixels();
 
@@ -154,9 +154,13 @@ void ofApp::draw(){
 	}
 	if (a % 100 == 0)
 	{
-		string nazwa = "/proba4/" + to_string(a) + ".jpg";
-		popnew.saveImage(nazwa);
+		string nazwa = "/nowe/" + to_string(a) + ".jpg";
+		//popnew.saveImage(nazwa);
 	}
+	ofSetColor(255, 255, 255);
+	ofDrawRectangle(224, 0, 224, 224);
+	
+	img.draw(224, 0);
 	//cam.end();
 	
 }

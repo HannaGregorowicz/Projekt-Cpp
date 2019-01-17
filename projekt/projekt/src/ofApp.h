@@ -46,4 +46,5 @@ class ofApp : public ofBaseApp{
 		
 		void mutuj();	// Funkcja robi¹ca mutacje
 
+
 };
