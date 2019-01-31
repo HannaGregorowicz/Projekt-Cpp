@@ -6,7 +6,6 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	//cam.setAutoDistance(true);
 	
 	int msg = MessageBox(NULL, L"Czy chcesz wgraæ w³asny obrazek?", L"Wybierz", MB_YESNO);
 
@@ -16,12 +15,11 @@ void ofApp::setup(){
 		if (result.bSuccess) {
 			string path = result.getPath();
 			img.load(path);
-			// load your file at `path`
 		}
 	}
 	else
 	{
-		img.load("images/delfin.jpg");
+		img.load("images/cat.jpg");
 	}
 	
 	
@@ -45,7 +43,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 int ofApp::mierz(int x) {
 
-	double fitness1 = 0;		// Tu zeruje zmienna
+	double fitness1 = 0;		// Zeruje zmienna
 
 
 	// Tutaj patrzy czy ma mierzyc podobienstwo dla populacji matki czy dla zmutowanej
@@ -61,14 +59,14 @@ int ofApp::mierz(int x) {
 
 	for (int i = 0; i < (ofGetHeight()*ofGetHeight() * 3); i++)	  // Tutaj jest *3, poniewaz kazdy piksel zajmuje 4
 	{															  // miejsca tablicy - r, g, b
-		//Ta petla leci po kazdym pikselu obrazka i pobiera wartosc
+		// Ta petla leci po kazdym pikselu obrazka i pobiera wartosc
 		if (i % 3 == 0)
 		{
 			int temp = int(piksele_org[i] - int(piksele_new[i]));
-			fitness1 += pow(temp, 2);		//Glowne rownanie mierzenia "roznicy" miedzy obrazkami
+			fitness1 += pow(temp, 2);		// Glowne rownanie mierzenia "roznicy" miedzy obrazkami
 		}
 	}
-	fitness1 /= 1000000.0;	//Dziele przez milion, zeby mozna bylo latwiej zarzadzac ta liczba
+	fitness1 /= 1000000.0;	// Dziele przez milion, zeby mozna bylo latwiej zarzadzac ta liczba
 	return fitness1;
 }
 
@@ -76,10 +74,9 @@ int ofApp::mierz(int x) {
 void ofApp::mutuj() {
 
 	koleczka_zmutowane.clear();
-	for (int i = 0; i < koleczka.size(); i++)		// Ta petla to rozwiazanie tymczasowe
+	for (int i = 0; i < koleczka.size(); i++)		// Kopiowanie oryginalnej populacji, zeby moc ja zmutowac
 	{
 		koleczka_zmutowane.push_back(koleczka[i]);
-		
 	}
 	int i = ofRandom(koleczka_zmutowane.size());		// Ktore kolko ma byc zmutowane
 	int x = ofRandom(5);	// Ktory parametr ma byc zmutowany? x, y, r, kolor czy transparentnosc
@@ -117,11 +114,10 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	//cam.begin();
 	
 	a++;
 	
-	for (int i = 0; i < koleczka.size(); i++)
+	for (int i = 0; i < koleczka.size(); i++)	// Rysowanie
 	{
 		ofSetColor(koleczka[i].col, koleczka[i].col, koleczka[i].col, koleczka[i].t);
 		ofDrawCircle(koleczka[i].x, koleczka[i].y, koleczka[i].radius);
@@ -146,9 +142,8 @@ void ofApp::draw(){
 	
 	fit2 = mierz(2);
 
-	if (fit2 < fit1)
+	if (fit2 < fit1)	//Przypisywanie zmutowanej populacji do oryginalnej
 	{
-		//Dobrze by bylo wrzucic to w osobna funkcje
 		for (int i = 0; i < koleczka.size(); i++)
 		{
 
@@ -164,6 +159,7 @@ void ofApp::draw(){
 		cout << a << endl;
 		cout <<"Fit: " << fit2 << endl;
 	}
+	/*
 	if (a < 2000)
 	{
 		if (a % 50 == 0)
@@ -188,13 +184,12 @@ void ofApp::draw(){
 			popnew.saveImage(nazwa);
 		}
 	}
-
+	*/
 	
 	ofSetColor(255, 255, 255);
 	ofDrawRectangle(224, 0, 224, 224);
 	
 	img.draw(224, 0);
-	//cam.end();
 	
 }
 
