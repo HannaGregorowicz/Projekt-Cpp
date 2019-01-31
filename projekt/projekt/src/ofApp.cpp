@@ -2,11 +2,28 @@
 #include "../kolo.h"
 #include <algorithm>
 #include <string>
+#include <windows.h>
 
 //--------------------------------------------------------------
 void ofApp::setup(){
 	//cam.setAutoDistance(true);
-	img.load("images/cat.jpg");
+	
+	int msg = MessageBox(NULL, L"Czy chcesz wgraæ w³asny obrazek?", L"Wybierz", MB_YESNO);
+
+	if (msg == 6)
+	{
+		ofFileDialogResult result = ofSystemLoadDialog("Load file");
+		if (result.bSuccess) {
+			string path = result.getPath();
+			img.load(path);
+			// load your file at `path`
+		}
+	}
+	else
+	{
+		img.load("images/delfin.jpg");
+	}
+	
 	
 	piksele_org = img.getPixels();
 
@@ -94,12 +111,7 @@ void ofApp::mutuj() {
 
 //--------------------------------------------------------------
 void ofApp::update(){
-
-	if (a == 99999)
-	{
-		koniec.grabScreen(0, 0, 224, 224);
-		koniec.saveImage("murlok.jpg");
-	}		
+	
 	
 }
 
@@ -152,11 +164,32 @@ void ofApp::draw(){
 		cout << a << endl;
 		cout <<"Fit: " << fit2 << endl;
 	}
-	if (a % 100 == 0)
+	if (a < 2000)
 	{
-		string nazwa = "/nowe/" + to_string(a) + ".jpg";
-		//popnew.saveImage(nazwa);
+		if (a % 50 == 0)
+		{
+			string nazwa = "/corgidelfin/" + to_string(a) + ".jpg";
+			popnew.saveImage(nazwa);
+		}
 	}
+	else if (a >= 2000 && a < 4000)
+	{
+		if (a % 300 == 0)
+		{
+			string nazwa = "/corgidelfin/" + to_string(a) + ".jpg";
+			popnew.saveImage(nazwa);
+		}
+	}
+	else
+	{
+		if (a % 600 == 0)
+		{
+			string nazwa = "/corgidelfin/" + to_string(a) + ".jpg";
+			popnew.saveImage(nazwa);
+		}
+	}
+
+	
 	ofSetColor(255, 255, 255);
 	ofDrawRectangle(224, 0, 224, 224);
 	
